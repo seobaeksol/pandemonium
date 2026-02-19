@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f2f4ef;
+  --panel: rgba(255, 255, 255, 0.84);
+  --panel-strong: #ffffff;
+  --ink: #172126;
+  --muted: #5a6a72;
+  --line: rgba(23, 33, 38, 0.12);
+  --accent: #0d6b6b;
+  --accent-2: #b45309;
+  --danger: #9f1239;
+  --ok: #166534;
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 14%, rgba(13, 107, 107, 0.18), transparent 40%),
+    radial-gradient(circle at 89% 9%, rgba(180, 83, 9, 0.18), transparent 45%),
+    linear-gradient(160deg, #f8faf6 0%, #ebf2ef 40%, #f4f6ef 100%);
+  min-height: 100vh;
+}

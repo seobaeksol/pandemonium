@@ -44,7 +44,11 @@ export class HealthController {
   }
 
   private async checkRedis() {
-    const redis = new Redis(this.configService.get<string>('REDIS_URL'));
+    const redisUrl = this.configService.get<string>('REDIS_URL');
+    if (!redisUrl) {
+      return { status: 'down', error: 'REDIS_URL not configured' };
+    }
+    const redis = new Redis(redisUrl);
     try {
       await redis.ping();
       redis.disconnect();
