@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Param } from '@nestjs/common';
 import { IncidentsService } from './incidents.service';
 
 @Controller('api/v1/incidents')
@@ -34,5 +34,25 @@ export class IncidentsController {
       page: page ? parseInt(page, 10) : 1,
       pageSize: pageSize ? parseInt(pageSize, 10) : 20,
     });
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.incidentsService.findOne(id);
+  }
+
+  @Get(':id/timeline')
+  async findTimeline(@Param('id') id: string) {
+    return this.incidentsService.findTimeline(id);
+  }
+
+  @Get(':id/evidence')
+  async findEvidence(@Param('id') id: string) {
+    return this.incidentsService.findEvidence(id);
+  }
+
+  @Get(':id/sources')
+  async findSources(@Param('id') id: string) {
+    return this.incidentsService.findSources(id);
   }
 }

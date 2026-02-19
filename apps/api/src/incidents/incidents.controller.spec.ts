@@ -7,6 +7,10 @@ describe('IncidentsController', () => {
 
   const incidentsServiceMock = {
     findAll: jest.fn(),
+    findOne: jest.fn(),
+    findTimeline: jest.fn(),
+    findEvidence: jest.fn(),
+    findSources: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -92,6 +96,54 @@ describe('IncidentsController', () => {
       const params = incidentsServiceMock.findAll.mock.calls[0][0];
       expect(typeof params.page).toBe('number');
       expect(typeof params.pageSize).toBe('number');
+    });
+  });
+
+  describe('findOne', () => {
+    it('calls service.findOne with id', async () => {
+      const mockResult = { id: '123', title: 'Test Incident' };
+      incidentsServiceMock.findOne.mockResolvedValue(mockResult);
+
+      const result = await controller.findOne('123');
+
+      expect(result).toBe(mockResult);
+      expect(incidentsServiceMock.findOne).toHaveBeenCalledWith('123');
+    });
+  });
+
+  describe('findTimeline', () => {
+    it('calls service.findTimeline with id', async () => {
+      const mockResult = { incidentId: '123', events: [] };
+      incidentsServiceMock.findTimeline.mockResolvedValue(mockResult);
+
+      const result = await controller.findTimeline('123');
+
+      expect(result).toBe(mockResult);
+      expect(incidentsServiceMock.findTimeline).toHaveBeenCalledWith('123');
+    });
+  });
+
+  describe('findEvidence', () => {
+    it('calls service.findEvidence with id', async () => {
+      const mockResult = { incidentId: '123', items: [] };
+      incidentsServiceMock.findEvidence.mockResolvedValue(mockResult);
+
+      const result = await controller.findEvidence('123');
+
+      expect(result).toBe(mockResult);
+      expect(incidentsServiceMock.findEvidence).toHaveBeenCalledWith('123');
+    });
+  });
+
+  describe('findSources', () => {
+    it('calls service.findSources with id', async () => {
+      const mockResult = { incidentId: '123', sources: [] };
+      incidentsServiceMock.findSources.mockResolvedValue(mockResult);
+
+      const result = await controller.findSources('123');
+
+      expect(result).toBe(mockResult);
+      expect(incidentsServiceMock.findSources).toHaveBeenCalledWith('123');
     });
   });
 });
