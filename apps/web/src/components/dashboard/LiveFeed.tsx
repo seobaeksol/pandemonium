@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export function LiveFeed() {
   return (
@@ -18,6 +19,7 @@ export function LiveFeed() {
           desc: "Violence cluster detected in central district (3 linked incidents)",
           meta: "11:22 | Verified source | Confidence 0.94",
           action: "Map",
+          href: "/cases/SP-2094",
         },
         {
           tag: "High",
@@ -25,6 +27,7 @@ export function LiveFeed() {
           desc: "Potential arson signal - warehouse block (investigation ongoing)",
           meta: "11:14 | Multi-source match | Confidence 0.89",
           action: "Track",
+          href: "/cases/SP-2095",
         },
         {
           tag: "Medium",
@@ -32,11 +35,13 @@ export function LiveFeed() {
           desc: "Historic comparison alert: +18% violence trend vs same week last year",
           meta: "11:05 | Analytics model | Confidence 0.97",
           action: "Compare",
+          href: "/cases/SP-2096",
         },
       ].map((item, i) => (
-        <div
+        <Link
+          href={item.href}
           key={i}
-          className="grid grid-cols-[auto_1fr_auto] gap-2.5 p-3.5 border-b border-line last:border-b-0"
+          className="grid grid-cols-[auto_1fr_auto] gap-2.5 p-3.5 border-b border-line last:border-b-0 hover:bg-black/5 transition-colors cursor-pointer"
         >
           <span
             className={`text-[10px] tracking-wide uppercase rounded-full border px-2 py-1 ${item.tagClass}`}
@@ -47,10 +52,10 @@ export function LiveFeed() {
             <p className="m-0 text-[13px] leading-snug">{item.desc}</p>
             <div className="mt-1 text-[11px] text-muted">{item.meta}</div>
           </div>
-          <span className="text-[10px] tracking-wide uppercase rounded-full border border-line px-2 py-1 bg-white text-[#55656f]">
+          <span className="text-[10px] tracking-wide uppercase rounded-full border border-line px-2 py-1 bg-white text-[#55656f] h-fit">
             {item.action}
           </span>
-        </div>
+        </Link>
       ))}
 
       <div className="flex justify-between items-center p-3.5 border-b border-line mt-1.5">
