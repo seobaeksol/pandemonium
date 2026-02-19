@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Incident {
+  id              String   @id @default(uuid())
+  title           String
+  incidentType    String   @map("incident_type")
+  severityLevel   String   @map("severity_level")
+  status          IncidentStatus
+  confidenceScore Float    @map("confidence_score")
+  regionCode      String   @map("region_code")
+  geoCellId       String   @map("geo_cell_id")
+  redactionLevel  String   @map("redaction_level")
+  occurredAt      DateTime @map("occurred_at")
+  lastUpdatedAt   DateTime @default(now()) @map("last_updated_at")
+
+  events            IncidentEvent[]
+  evidenceItems     EvidenceItem[]
+  correctionRequests CorrectionRequest[]
+  auditLogs         AuditLog[]
+
+  @@index([status, lastUpdatedAt(sort: Desc)])
+  @@index([regionCode, occurredAt(sort: Desc)])
+  @@index([incidentType, occurredAt(sort: Desc)])
+  @@index([geoCellId])
+  @@map("incident")
+}
+
+model IncidentEvent {
+  id          String   @id @default(uuid())
+  incidentId  String   @map("incident_id")
+  eventType   String   @map("event_type")
+  eventTime   DateTime @map("event_time")
+  summary     String
+  triggerType String   @map("trigger_type")
+  sourceRefs  Json     @map("source_refs")
+
+  incident Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+
+  @@index([incidentId, eventTime(sort: Desc)])
+  @@map("incident_event")
+}
+
+model EvidenceItem {
+  id               String   @id @default(uuid())
+  incidentId       String   @map("incident_id")
+  sourceId         String   @map("source_id")
+  evidenceType     String   @map("evidence_type")
+  description      String
+  reliabilityScore Float    @map("reliability_score")
+  collectedAt      DateTime @map("collected_at")
+
+  incident Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  source   Source   @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([incidentId, reliabilityScore(sort: Desc)])
+  @@index([sourceId, collectedAt(sort: Desc)])
+  @@map("evidence_item")
+}
+
+model Source {
+  id                 String  @id @default(uuid())
+  name               String
+  sourceType         String  @map("source_type")
+  trustTier          String  @map("trust_tier")
+  refreshIntervalSec Int     @map("refresh_interval_sec")
+  isActive           Boolean @default(true) @map("is_active")
+
+  evidenceItems EvidenceItem[]
+
+  @@map("source")
+}
+
+model CorrectionRequest {
+  id          String   @id @default(uuid())
+  incidentId  String   @map("incident_id")
+  requestedAt DateTime @default(now()) @map("requested_at")
+  requestedBy String   @map("requested_by")
+  reasonCode  String   @map("reason_code")
+  requestNote String   @map("request_note")
+  reviewStatus String  @map("review_status")
+  resolvedAt  DateTime? @map("resolved_at")
+
+  incident Incident @relation(fields: [incidentId], references: [id], onDelete: Restrict)
+
+  @@index([incidentId, reviewStatus, requestedAt(sort: Desc)])
+  @@map("correction_request")
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  incidentId  String?  @map("incident_id")
+  actorId     String   @map("actor_id")
+  actionType  String   @map("action_type")
+  targetType  String   @map("target_type")
+  targetId    String   @map("target_id")
+  payloadHash String   @map("payload_hash")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  incident Incident? @relation(fields: [incidentId], references: [id])
+
+  @@index([targetType, targetId, createdAt(sort: Desc)])
+  @@index([actorId, createdAt(sort: Desc)])
+  @@map("audit_log")
+}
+
+enum IncidentStatus {
+  monitoring
+  verified
+  corrected
+  restricted
+}
