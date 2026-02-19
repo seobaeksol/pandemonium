@@ -1,0 +1,16 @@
+id,title,priority,stream,owner_role,reviewer_role,start_date,due_date,dependency,status
+FE-101,Dashboard Layout Implementation (Filter+Map+Feed shell),P1,Frontend,FE,QA,2026-03-09,2026-03-11,FE-01,Backlog
+FE-102,Case Detail Page Implementation (Header+Tabs+Timeline),P1,Frontend,FE,QA,2026-03-09,2026-03-12,FE-02,Backlog
+BE-101,Incident List API Implementation (GET /incidents),P1,ArchitectureAPI,BE A,FE,2026-03-09,2026-03-11,AR-02,Backlog
+BE-102,Incident Detail API Implementation (GET /incidents/:id),P1,ArchitectureAPI,BE A,FE,2026-03-09,2026-03-11,AR-02,Backlog
+DA-101,Ingest Worker Implementation (Source Adapters),P1,Data,Data,BE A,2026-03-09,2026-03-13,DA-02,Backlog
+DA-102,Normalization Pipeline Implementation,P1,Data,Data,BE A,2026-03-11,2026-03-13,DA-02,Backlog
+OP-101,Dev Environment Provisioning (DB/Redis/API),P1,DevOpsInfra,SRE,Tech Lead,2026-03-09,2026-03-10,OP-01,Backlog
+FE-103,Map Visualization Integration (Mapbox/Leaflet),P2,Frontend,FE,Tech Lead,2026-03-12,2026-03-14,FE-101,Backlog
+BE-103,WebSocket Server Implementation (Real-time Feed),P2,ArchitectureAPI,BE B,FE,2026-03-12,2026-03-16,AR-02,Backlog
+QA-101,E2E Test Framework Setup (Playwright/Cypress),P2,QARelease,QA,FE,2026-03-12,2026-03-13,QA-01,Backlog
+DA-103,Dedup Logic Implementation (Exact Match),P2,Data,Data,BE B,2026-03-14,2026-03-16,DA-03,Backlog
+OP-102,Staging Environment Setup,P2,DevOpsInfra,SRE,QA,2026-03-16,2026-03-17,OP-01,Backlog
+FE-104,Real-time Feed Integration (WS Client),P2,Frontend,FE,BE B,2026-03-16,2026-03-18,BE-103,Backlog
+BE-104,Correction Workflow API Implementation,P2,ArchitectureAPI,BE A,Policy,2026-03-16,2026-03-18,PP-04,Backlog
+QA-102,Critical Path E2E Test Implementation,P2,QARelease,QA,FE,2026-03-16,2026-03-19,QA-101,Backlog
