@@ -1,0 +1,18 @@
+Summary,Issue Type,Priority,Labels,Description,Due Date
+"[PP-01] PRD v1 확정 (MVP scope + 제외 범위)",Task,Highest,"phase-0 priority-p0 stream-product-policy","Goal: MVP 범위를 확정해 스코프 흔들림 방지. Acceptance: 포함/제외 범위 + 성공지표 + PO/Tech Lead 승인.",2026-02-23
+"[FE-01] 페이지 구조/라우팅 맵 확정",Task,Highest,"phase-0 priority-p0 stream-frontend","Goal: 화면 라우팅 구조 고정. Acceptance: dashboard/detail/compare/alerts + 오류/권한 라우트 정의.",2026-02-23
+"[DA-01] 데이터 소스 인벤토리 작성",Task,Highest,"phase-0 priority-p0 stream-data","Goal: 수집 소스 신뢰도/갱신성 가시화. Acceptance: 소스 목록 + trust tier + 사용 제한 메모.",2026-02-23
+"[PP-02] 사건 상태 모델 합의",Task,Highest,"phase-0 priority-p0 stream-product-policy","Goal: 상태 전이 공통 규칙 고정. Acceptance: 전이도 + 상태 조건 + FE/BE/Policy 승인.",2026-02-24
+"[PP-03] 마스킹 정책 문서화",Task,Highest,"phase-0 priority-p0 stream-product-policy","Goal: 민감 정보 노출 차단. Acceptance: 금지 필드 + 격자화 기준 + Policy 승인.",2026-02-24
+"[FE-02] 상세 화면 컴포넌트 명세",Task,Highest,"phase-0 priority-p0 stream-frontend","Goal: 상세 화면 병렬개발 준비. Acceptance: 컴포넌트 계약 + props 스키마 + 상태별 렌더링 규칙.",2026-02-24
+"[DA-02] Ingest->Normalize 설계",Task,Highest,"phase-0 priority-p0 stream-data","Goal: 입력 데이터 표준화 설계. Acceptance: input/output schema + 실패 레코드 정책.",2026-02-24
+"[AR-01] 도메인 ERD 확정",Task,Highest,"phase-0 priority-p0 stream-architecture-api","Goal: 도메인 기준점 확정. Acceptance: ERD + data dictionary + FK/인덱스 전략.",2026-02-25
+"[AR-02] API 계약서 v1 (REST/WS)",Task,Highest,"phase-0 priority-p0 stream-architecture-api","Goal: FE/BE 계약 우선 개발. Acceptance: endpoint schema + WS 이벤트 + 오류 응답 규격.",2026-02-25
+"[AR-03] 권한 모델 설계 (RBAC + 민감태그)",Task,Highest,"phase-0 priority-p0 stream-architecture-api","Goal: 역할별 접근 경계 확정. Acceptance: 권한표 + restricted 규칙 + Policy 승인.",2026-02-25
+"[DA-03] Dedup 규칙/임계치 정의",Task,Highest,"phase-0 priority-p0 stream-data","Goal: 중복 집계 제거 기준 고정. Acceptance: 판정 규칙 + 임계치 + 샘플 10건 검증.",2026-02-25
+"[PP-04] 정정/이의신청 처리 SOP 작성",Task,Highest,"phase-0 priority-p0 stream-product-policy","Goal: 정정 프로세스 운영화. Acceptance: 단계별 책임 + SLA + corrected 반영 규칙.",2026-02-25
+"[QA-01] 테스트 전략 수립 (unit/integration/E2E)",Task,Highest,"phase-0 priority-p0 stream-qa-release","Goal: 테스트 책임 분리. Acceptance: 테스트 피라미드 + 회귀 범위 + PR/배포 게이트 반영.",2026-02-26
+"[QA-02] DoR/DoD 최종 합의",Task,Highest,"phase-0 priority-p0 stream-qa-release","Goal: 작업 시작/완료 기준 통일. Acceptance: DoR + DoD + 팀 승인 기록.",2026-02-26
+"[OP-01] 환경 분리 정책 (dev/staging/prod)",Task,Highest,"phase-0 priority-p0 stream-devops-infra","Goal: 환경 혼선 방지. Acceptance: 환경 설정 + 시크릿 규칙 + 접근 분리 원칙.",2026-02-26
+"[OP-02] CI 파이프라인 구축",Task,Highest,"phase-0 priority-p0 stream-devops-infra","Goal: PR 자동 검증 강제. Acceptance: lint/typecheck/test/build 자동 실행 + 머지 차단.",2026-02-27
+"[OP-03] 배포 파이프라인 + 롤백 준비",Task,Highest,"phase-0 priority-p0 stream-devops-infra","Goal: 복구 가능한 릴리즈 체계. Acceptance: staging 성공 + canary 전략 + 롤백 리허설.",2026-03-02

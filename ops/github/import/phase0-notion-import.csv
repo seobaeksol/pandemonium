@@ -1,0 +1,18 @@
+Name,Status,Priority,Stream,Owner Role,Reviewer Role,Start Date,Due Date,Dependency,Policy Impact
+[PP-01] PRD v1 확정 (MVP scope + 제외 범위),Backlog,P0,Product/Policy,PO,Tech Lead,2026-02-23,2026-02-23,,low
+[FE-01] 페이지 구조/라우팅 맵 확정,Backlog,P0,Frontend,FE,Tech Lead,2026-02-23,2026-02-23,PP-01,low
+[DA-01] 데이터 소스 인벤토리 작성,Backlog,P0,Data,Data,PO,2026-02-23,2026-02-23,PP-01,medium
+[PP-02] 사건 상태 모델 합의,Backlog,P0,Product/Policy,PO,Policy,2026-02-24,2026-02-24,PP-01,high
+[PP-03] 마스킹 정책 문서화,Backlog,P0,Product/Policy,Policy,Tech Lead,2026-02-24,2026-02-24,PP-01,high
+[FE-02] 상세 화면 컴포넌트 명세,Backlog,P0,Frontend,FE,QA,2026-02-24,2026-02-24,FE-01,medium
+[DA-02] Ingest->Normalize 설계,Backlog,P0,Data,Data,BE A,2026-02-24,2026-02-24,DA-01,medium
+[AR-01] 도메인 ERD 확정,Backlog,P0,Architecture/API,Tech Lead + BE A,BE B,2026-02-25,2026-02-25,PP-02,medium
+[AR-02] API 계약서 v1 (REST/WS),Backlog,P0,Architecture/API,BE A,FE,2026-02-25,2026-02-25,AR-01,medium
+[AR-03] 권한 모델 설계 (RBAC + 민감태그),Backlog,P0,Architecture/API,BE B,Policy,2026-02-25,2026-02-25,AR-01,high
+[DA-03] Dedup 규칙/임계치 정의,Backlog,P0,Data,Data + BE B,Tech Lead,2026-02-25,2026-02-25,DA-02,medium
+[PP-04] 정정/이의신청 처리 SOP 작성,Backlog,P0,Product/Policy,Policy + PO,Ops/Admin,2026-02-25,2026-02-25,PP-03,high
+[QA-01] 테스트 전략 수립 (unit/integration/E2E),Backlog,P0,QA/Release,QA,Tech Lead,2026-02-26,2026-02-26,AR-02 + FE-02,low
+[QA-02] DoR/DoD 최종 합의,Backlog,P0,QA/Release,QA + Tech Lead,PO,2026-02-26,2026-02-26,QA-01,low
+[OP-01] 환경 분리 정책 (dev/staging/prod),Backlog,P0,DevOps/Infra,SRE,Tech Lead,2026-02-26,2026-02-26,,medium
+[OP-02] CI 파이프라인 구축,Backlog,P0,DevOps/Infra,SRE,QA,2026-02-27,2026-02-27,QA-01,low
+[OP-03] 배포 파이프라인 + 롤백 준비,Backlog,P0,DevOps/Infra,SRE,Tech Lead,2026-03-02,2026-03-02,OP-02,low
